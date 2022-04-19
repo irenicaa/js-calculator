@@ -104,6 +104,27 @@
   grid-row: 5/7;
 }
 
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+
+.calculator-container {
+  width: 25%;
+  border: 2px solid #38363b;
+  box-shadow: 0 3px 0 #38363b;
+  border-radius: 5px;
+  padding: 10px 10px 15px 10px;
+  background-color: #8ec1c5;
+}
+
 .input-field {
   width: 100%;
   border: 2px solid #38363b;
