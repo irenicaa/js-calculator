@@ -1,6 +1,12 @@
 window.addEventListener("DOMContentLoaded", () => {
   const inputField = document.querySelector(".input-field")
-  inputField.addEventListener("input", () => {
-    console.log(inputField.value)
+  let previousValue = inputField.value
+  inputField.addEventListener("input", event => {
+    if (!/^-?\d*(\.\d*)?$/.test(inputField.value)) {
+      inputField.value = previousValue
+      return
+    }
+
+    previousValue = inputField.value
   })
 })
