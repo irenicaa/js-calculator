@@ -1,7 +1,7 @@
 window.addEventListener("DOMContentLoaded", () => {
   const inputField = document.querySelector(".input-field")
   let previousValue = inputField.value
-  inputField.addEventListener("input", event => {
+  inputField.addEventListener("input", () => {
     if (!/^-?\d*(\.\d*)?$/.test(inputField.value)) {
       inputField.value = previousValue
       return
@@ -9,4 +9,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
     previousValue = inputField.value
   })
+
+  for (let i = 0; i < 10; i++) {
+    const button = document.querySelector(`.button-${i}`)
+    button.addEventListener("click", () => {
+      console.log(`button ${i}`)
+    })
+  }
 })
