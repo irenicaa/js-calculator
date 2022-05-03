@@ -13,7 +13,12 @@ window.addEventListener("DOMContentLoaded", () => {
   for (let i = 0; i < 10; i++) {
     const button = document.querySelector(`.button-${i}`)
     button.addEventListener("click", () => {
-      console.log(`button ${i}`)
+      if (inputField.value === "0") {
+        inputField.value = i
+        return
+      }
+
+      inputField.value += i
     })
   }
 })
