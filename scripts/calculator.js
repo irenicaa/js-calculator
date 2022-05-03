@@ -11,8 +11,8 @@ window.addEventListener("DOMContentLoaded", () => {
   })
 
   for (let i = 0; i < 10; i++) {
-    const button = document.querySelector(`.button-${i}`)
-    button.addEventListener("click", () => {
+    const digitButton = document.querySelector(`.button-${i}`)
+    digitButton.addEventListener("click", () => {
       if (inputField.value === "0") {
         inputField.value = i
         return
@@ -21,4 +21,11 @@ window.addEventListener("DOMContentLoaded", () => {
       inputField.value += i
     })
   }
+
+  const dotButton = document.querySelector(".button-dot")
+  dotButton.addEventListener("click", () => {
+    if (!inputField.value.includes(".")) {
+      inputField.value += "."
+    }
+  })
 })
