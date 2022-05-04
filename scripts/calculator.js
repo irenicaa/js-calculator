@@ -10,11 +10,13 @@ window.addEventListener("DOMContentLoaded", () => {
     previousValue = inputField.value
   })
 
+  let isNewNumber = false
   for (let i = 0; i < 10; i++) {
     const digitButton = document.querySelector(`.button-${i}`)
     digitButton.addEventListener("click", () => {
-      if (inputField.value === "0") {
+      if (isNewNumber || inputField.value === "0") {
         inputField.value = i
+        isNewNumber = false
         return
       }
 
@@ -27,5 +29,10 @@ window.addEventListener("DOMContentLoaded", () => {
     if (!inputField.value.includes(".")) {
       inputField.value += "."
     }
+  })
+
+  const plusButton = document.querySelector(".button-plus")
+  plusButton.addEventListener("click", () => {
+    isNewNumber = true
   })
 })
