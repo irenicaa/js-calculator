@@ -35,16 +35,19 @@ window.addEventListener("DOMContentLoaded", () => {
   })
 
   let lastOperation
-  const plusButton = document.querySelector(".button-plus")
-  plusButton.addEventListener("click", () => {
-    if (!isNewExpression) {
-      evaluate()
-    }
+  const operations = ["plus", "minus", "star", "division", "percent"]
+  for (let operation of operations) {
+    const operationButton = document.querySelector(`.button-${operation}`)
+    operationButton.addEventListener("click", () => {
+      if (!isNewExpression) {
+        evaluate()
+      }
 
-    lastOperation = "plus"
-    isNewNumber = true
-    isNewExpression = false
-  })
+      lastOperation = operation
+      isNewNumber = true
+      isNewExpression = false
+    })
+  }
 
   const equalButton = document.querySelector(".button-equal")
   equalButton.addEventListener("click", () => {
