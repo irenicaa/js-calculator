@@ -52,7 +52,9 @@ window.addEventListener("DOMContentLoaded", () => {
   const equalButton = document.querySelector(".button-equal")
   equalButton.addEventListener("click", () => {
     evaluate()
-    isNewExpression = false
+
+    isNewNumber = true
+    isNewExpression = true
   })
 
   function evaluate() {
