@@ -56,15 +56,30 @@ window.addEventListener("DOMContentLoaded", () => {
   })
 
   function evaluate() {
-    if (lastOperation === "plus") {
-      const firstNumber = parseFloat(previosNumber)
-      const secondNumber = parseFloat(inputField.value)
-      const result = firstNumber + secondNumber
-      inputField.value = result
+    const firstNumber = parseFloat(previosNumber)
+    const secondNumber = parseFloat(inputField.value)
 
-      return
+    let result
+    switch (lastOperation) {
+      case "plus":
+        result = firstNumber + secondNumber
+        break
+      case "minus":
+        result = firstNumber - secondNumber
+        break
+      case "star":
+        result = firstNumber * secondNumber
+        break
+      case "division":
+        result = firstNumber / secondNumber
+        break
+      case "percent":
+        result = firstNumber * (secondNumber / 100)
+        break
+      default:
+        throw new Error("unsupported operation")
     }
 
-    throw new Error("unsupported operation")
+    inputField.value = result
   }
 })
