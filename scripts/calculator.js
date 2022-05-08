@@ -10,14 +10,14 @@ window.addEventListener("DOMContentLoaded", () => {
     previousValue = inputField.value
   })
 
-  let previosNumber
+  let previousNumber
   let isNewNumber = true
   let isNewExpression = true
   for (let i = 0; i < 10; i++) {
     const digitButton = document.querySelector(`.button-${i}`)
     digitButton.addEventListener("click", () => {
       if (isNewNumber) {
-        previosNumber = inputField.value
+        previousNumber = inputField.value
         inputField.value = i
         isNewNumber = false
         return
@@ -58,7 +58,7 @@ window.addEventListener("DOMContentLoaded", () => {
   })
 
   function evaluate() {
-    const firstNumber = parseFloat(previosNumber)
+    const firstNumber = parseFloat(previousNumber)
     const secondNumber = parseFloat(inputField.value)
 
     let result
