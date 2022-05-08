@@ -49,6 +49,12 @@ window.addEventListener("DOMContentLoaded", () => {
     })
   }
 
+  const radixButton = document.querySelector(".button-radix")
+  radixButton.addEventListener("click", () => {
+    const number = parseFloat(inputField.value)
+    inputField.value = Math.sqrt(number)
+  })
+
   const equalButton = document.querySelector(".button-equal")
   equalButton.addEventListener("click", () => {
     evaluate()
