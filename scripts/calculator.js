@@ -63,6 +63,15 @@ window.addEventListener("DOMContentLoaded", () => {
     isNewExpression = true
   })
 
+  const cleanButton = document.querySelector(".button-clean")
+  cleanButton.addEventListener("click", () => {
+    inputField.value = "0"
+    previousNumber = undefined
+    isNewNumber = true
+    isNewExpression = true
+    lastOperation = undefined
+  })
+
   function evaluate() {
     const firstNumber = parseFloat(previousNumber)
     const secondNumber = parseFloat(inputField.value)
