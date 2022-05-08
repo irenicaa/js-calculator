@@ -29,6 +29,13 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const dotButton = document.querySelector(".button-dot")
   dotButton.addEventListener("click", () => {
+    if (isNewNumber) {
+      previousNumber = inputField.value
+      inputField.value = "."
+      isNewNumber = false
+      return
+    }
+
     if (!inputField.value.includes(".")) {
       inputField.value += "."
     }
