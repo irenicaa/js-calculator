@@ -1,18 +1,8 @@
 window.addEventListener("DOMContentLoaded", () => {
-  const inputField = document.querySelector(".input-field")
-  let previousValue = inputField.value
-  inputField.addEventListener("input", () => {
-    if (!/^-?\d*(\.\d*)?$/.test(inputField.value)) {
-      inputField.value = previousValue
-      return
-    }
-
-    previousValue = inputField.value
-  })
-
   let previousNumber
   let isNewNumber = true
   let isNewExpression = true
+  const inputField = document.querySelector(".input-field")
   for (let i = 0; i < 10; i++) {
     const digitButton = document.querySelector(`.button-${i}`)
     digitButton.addEventListener("click", () => {
