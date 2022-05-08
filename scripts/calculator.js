@@ -39,7 +39,7 @@ window.addEventListener("DOMContentLoaded", () => {
   for (let operation of operations) {
     const operationButton = document.querySelector(`.button-${operation}`)
     operationButton.addEventListener("click", () => {
-      if (!isNewExpression) {
+      if (!isNewNumber && !isNewExpression) {
         evaluate()
       }
 
