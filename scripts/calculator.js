@@ -57,7 +57,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const equalButton = document.querySelector(".button-equal")
   equalButton.addEventListener("click", () => {
-    evaluate()
+    if (!isNewNumber && !isNewExpression) {
+      evaluate()
+    }
 
     isNewNumber = true
     isNewExpression = true
@@ -94,7 +96,7 @@ window.addEventListener("DOMContentLoaded", () => {
         result = firstNumber * (secondNumber / 100)
         break
       default:
-        throw new Error("unsupported operation")
+        return
     }
 
     inputField.value = result
