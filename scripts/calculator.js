@@ -1,15 +1,14 @@
 window.addEventListener("DOMContentLoaded", () => {
-  let previousNumber
-  let isNewNumber = true
-  let isNewExpression = true
   const inputField = document.querySelector(".input-field")
+  let state = new CalculatorState(inputField)
+
   for (let i = 0; i < 10; i++) {
     const digitButton = document.querySelector(`.button-${i}`)
     digitButton.addEventListener("click", () => {
-      if (isNewNumber) {
-        previousNumber = inputField.value
+      if (state.isNewNumber) {
+        state.previousNumber = inputField.value
         inputField.value = i
-        isNewNumber = false
+        state.isNewNumber = false
         return
       }
 
@@ -19,10 +18,10 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const dotButton = document.querySelector(".button-dot")
   dotButton.addEventListener("click", () => {
-    if (isNewNumber) {
-      previousNumber = inputField.value
+    if (state.isNewNumber) {
+      state.previousNumber = inputField.value
       inputField.value = "."
-      isNewNumber = false
+      state.isNewNumber = false
       return
     }
 
@@ -31,18 +30,17 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   })
 
-  let lastOperation
   const operations = ["plus", "minus", "star", "division", "percent"]
   for (let operation of operations) {
     const operationButton = document.querySelector(`.button-${operation}`)
     operationButton.addEventListener("click", () => {
-      if (!isNewNumber && !isNewExpression) {
+      if (!state.isNewNumber && !state.isNewExpression) {
         evaluate()
       }
 
-      lastOperation = operation
-      isNewNumber = true
-      isNewExpression = false
+      state.lastOperation = operation
+      state.isNewNumber = true
+      state.isNewExpression = false
     })
   }
 
@@ -54,29 +52,25 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const equalButton = document.querySelector(".button-equal")
   equalButton.addEventListener("click", () => {
-    if (!isNewNumber && !isNewExpression) {
+    if (!state.isNewNumber && !state.isNewExpression) {
       evaluate()
     }
 
-    isNewNumber = true
-    isNewExpression = true
+    state = new CalculatorState(inputField)
   })
 
   const cleanButton = document.querySelector(".button-clean")
   cleanButton.addEventListener("click", () => {
     inputField.value = "0"
-    previousNumber = undefined
-    isNewNumber = true
-    isNewExpression = true
-    lastOperation = undefined
+    state = new CalculatorState(inputField)
   })
 
   function evaluate() {
-    const firstNumber = parseFloat(previousNumber)
+    const firstNumber = parseFloat(state.previousNumber)
     const secondNumber = parseFloat(inputField.value)
 
     let result
-    switch (lastOperation) {
+    switch (state.lastOperation) {
       case "plus":
         result = firstNumber + secondNumber
         break
