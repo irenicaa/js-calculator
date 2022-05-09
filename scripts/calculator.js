@@ -6,9 +6,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const digitButton = document.querySelector(`.button-${i}`)
     digitButton.addEventListener("click", () => {
       if (state.isNewNumber) {
-        state.previousNumber = inputField.value
-        inputField.value = i
-        state.isNewNumber = false
+        state.startNewNumber(i)
         return
       }
 
@@ -19,9 +17,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const dotButton = document.querySelector(".button-dot")
   dotButton.addEventListener("click", () => {
     if (state.isNewNumber) {
-      state.previousNumber = inputField.value
-      inputField.value = "."
-      state.isNewNumber = false
+      state.startNewNumber(".")
       return
     }
 
