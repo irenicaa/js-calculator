@@ -31,7 +31,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const operationButton = document.querySelector(`.button-${operation}`)
     operationButton.addEventListener("click", () => {
       if (state.hasCompletedExpression()) {
-        evaluate()
+        state.evaluateBinaryOperation()
       }
 
       state.setLastOperation(operation)
@@ -47,7 +47,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const equalButton = document.querySelector(".button-equal")
   equalButton.addEventListener("click", () => {
     if (state.hasCompletedExpression()) {
-      evaluate()
+      state.evaluateBinaryOperation()
     }
 
     state = new CalculatorState(inputField)
@@ -58,32 +58,4 @@ window.addEventListener("DOMContentLoaded", () => {
     inputField.value = "0"
     state = new CalculatorState(inputField)
   })
-
-  function evaluate() {
-    const firstNumber = parseFloat(state.previousNumber)
-    const secondNumber = parseFloat(inputField.value)
-
-    let result
-    switch (state.lastOperation) {
-      case "plus":
-        result = firstNumber + secondNumber
-        break
-      case "minus":
-        result = firstNumber - secondNumber
-        break
-      case "star":
-        result = firstNumber * secondNumber
-        break
-      case "division":
-        result = firstNumber / secondNumber
-        break
-      case "percent":
-        result = firstNumber * (secondNumber / 100)
-        break
-      default:
-        return
-    }
-
-    inputField.value = result
-  }
 })

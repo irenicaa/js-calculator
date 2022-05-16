@@ -21,3 +21,31 @@ CalculatorState.prototype.setLastOperation = function(operation) {
 CalculatorState.prototype.hasCompletedExpression = function() {
   return !this.isNewNumber && !this.isNewExpression
 }
+
+CalculatorState.prototype.evaluateBinaryOperation = function() {
+  const firstNumber = parseFloat(this.previousNumber)
+  const secondNumber = parseFloat(this.inputField.value)
+
+  let result
+  switch (this.lastOperation) {
+    case "plus":
+      result = firstNumber + secondNumber
+      break
+    case "minus":
+      result = firstNumber - secondNumber
+      break
+    case "star":
+      result = firstNumber * secondNumber
+      break
+    case "division":
+      result = firstNumber / secondNumber
+      break
+    case "percent":
+      result = firstNumber * (secondNumber / 100)
+      break
+    default:
+      return
+  }
+
+  this.inputField.value = result
+}
