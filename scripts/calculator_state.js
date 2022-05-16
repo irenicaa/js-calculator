@@ -49,3 +49,8 @@ CalculatorState.prototype.evaluateBinaryOperation = function() {
 
   this.inputField.value = result
 }
+
+CalculatorState.prototype.evaluateSquareRoot = function() {
+  const number = parseFloat(this.inputField.value)
+  this.inputField.value = Math.sqrt(number)
+}
