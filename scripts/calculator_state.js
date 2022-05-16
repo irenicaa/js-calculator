@@ -11,3 +11,9 @@ CalculatorState.prototype.startNewNumber = function(firstCharacter) {
   this.inputField.value = firstCharacter
   this.isNewNumber = false
 }
+
+CalculatorState.prototype.setLastOperation = function(operation) {
+  this.lastOperation = operation
+  this.isNewNumber = true
+  this.isNewExpression = false
+}

@@ -34,9 +34,7 @@ window.addEventListener("DOMContentLoaded", () => {
         evaluate()
       }
 
-      state.lastOperation = operation
-      state.isNewNumber = true
-      state.isNewExpression = false
+      state.setLastOperation(operation)
     })
   }
 
