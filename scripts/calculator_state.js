@@ -17,3 +17,7 @@ CalculatorState.prototype.setLastOperation = function(operation) {
   this.isNewNumber = true
   this.isNewExpression = false
 }
+
+CalculatorState.prototype.hasCompletedExpression = function() {
+  return !this.isNewNumber && !this.isNewExpression
+}

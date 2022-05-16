@@ -30,7 +30,7 @@ window.addEventListener("DOMContentLoaded", () => {
   for (let operation of operations) {
     const operationButton = document.querySelector(`.button-${operation}`)
     operationButton.addEventListener("click", () => {
-      if (!state.isNewNumber && !state.isNewExpression) {
+      if (state.hasCompletedExpression()) {
         evaluate()
       }
 
@@ -46,7 +46,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const equalButton = document.querySelector(".button-equal")
   equalButton.addEventListener("click", () => {
-    if (!state.isNewNumber && !state.isNewExpression) {
+    if (state.hasCompletedExpression()) {
       evaluate()
     }
 
